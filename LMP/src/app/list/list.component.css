@@ -1,0 +1,14 @@
+.col-1-4 {
+    width: 200px;
+    height: 300px;
+    padding: 10px;
+}
+
+#container{
+    display: flex;
+    width: 100%;
+}
+
+.card{
+    width: 200px;
+}

@@ -1,0 +1,19 @@
+<h2>
+  Hottest checklists
+</h2>
+<section id = "container">
+    <div>
+      <span *ngFor = "let cl of cllist" class="col-1-4">
+          <mat-card class = "card">
+            <mat-card-header>
+              <mat-card-title>{{cl.title}}</mat-card-title>
+            </mat-card-header>
+            <img mat-card-image src = "https://material.angular.io/assets/img/examples/shiba2.jpg">
+            <mat-card-actions>
+              <button mat-button routerLink="/detail/{{cl.id}}">Start Checking</button>
+            </mat-card-actions>
+          </mat-card>
+      </span>
+    </div>
+
+</section>
