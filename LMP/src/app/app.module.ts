@@ -19,6 +19,8 @@ import { MaterialModule } from './material.module';
 import { LoginComponent } from './login/login.component';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 
+import { CoreModule } from './core/core.module';
+import { AuthService } from './core/auth.service';
 
 @NgModule({
   declarations: [
@@ -39,8 +41,11 @@ import { HttpClient, HttpClientModule } from '@angular/common/http';
     AngularFireStorageModule,
     AngularFireAuthModule,
     BrowserAnimationsModule,
+    CoreModule,
   ],
-  providers: [],
+  providers: [
+    AuthService,
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

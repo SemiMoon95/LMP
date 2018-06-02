@@ -1,4 +1,19 @@
-<p>
-  login page!
-  구글 auth잘써서 잘만들면될듯!
-</p>
+<h1> Log In </h1>
+
+<!--div *ngIf="!(auth.user | async); else alreadyLoggedIn">
+  <h3>Google Login</h3>
+
+  <button (click)="signInWithGoogle()" class="button btn-social btn-google">
+    <i class="fa fa-google fa-lg"></i> Connect Google
+  </button>
+</div>
+
+<ng-template #alreadyLoggedIn>
+  <p>
+    You're logged in
+  </p>
+</ng-template-->
+
+  <button mat-button (click) = "singInWithGoogle()">
+    Connect Google
+  </button>
