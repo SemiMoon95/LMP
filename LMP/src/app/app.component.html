@@ -15,7 +15,14 @@
       <span class="spacer"></span>
       <span><a routerLink="/">{{title}}</a></span>
       <span class="spacer"></span>
-      <span><a routerLink="/login">Login</a></span>
+      <span>
+          <div *ngIf="!(auth.user | async); else alreadyLoggedIn">
+              <a routerLink="/login">Login</a>
+          </div>
+          <ng-template #alreadyLoggedIn>
+              <button (click)="logout()">Logout</button>
+          </ng-template>
+      </span>
     </mat-toolbar>
     <main>
       <router-outlet></router-outlet>
