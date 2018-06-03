@@ -8,6 +8,7 @@ import { AngularFirestoreModule } from 'angularfire2/firestore';
 import { AngularFireStorageModule, AngularFireStorage } from 'angularfire2/storage';
 import { AngularFireAuthModule } from 'angularfire2/auth';
 
+
 import { AppComponent } from './app.component';
 import { ListComponent } from './list/list.component';
 import { ClDetailComponent } from './cl-detail/cl-detail.component';

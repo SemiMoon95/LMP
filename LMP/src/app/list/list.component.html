@@ -1,9 +1,10 @@
 <h2>
   Hottest checklists
 </h2>
+
 <section id = "container">
     <div>
-      <span *ngFor = "let cl of cllist" class="col-1-4">
+      <span *ngFor = "let cl of checkLists" class="col-1-7">
           <mat-card class = "card">
             <mat-card-header>
               <mat-card-title>{{cl.title}}</mat-card-title>
@@ -15,5 +16,10 @@
           </mat-card>
       </span>
     </div>
-
 </section>
+
+
+
+
+
+

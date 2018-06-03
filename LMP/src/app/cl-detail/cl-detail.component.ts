@@ -24,8 +24,8 @@ export class ClDetailComponent implements OnInit {
   }
 
   getHero(): void{
-    const id = +this.route.snapshot.paramMap.get('id');
-    this.clservice.getCl(id).subscribe(cl => this.cl = cl);
+    //const id = +this.route.snapshot.paramMap.get('id');
+    //this.clservice.getCl(id).subscribe(cl => this.cl = cl);
   }
 
 }

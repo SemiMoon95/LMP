@@ -1,22 +1,57 @@
-import { Injectable } from '@angular/core';
+import { Injectable, ViewChild, Component } from '@angular/core';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 
-import { Observable, of } from 'rxjs';
+import { Observable, of, Subject } from 'rxjs';
+import { catchError, map, tap } from 'rxjs/operators';
+import { AngularFirestore, AngularFirestoreCollection, AngularFirestoreDocument } from "angularfire2/firestore";
+import { ArrayType } from '@angular/compiler/src/output/output_ast';
 
 import { CheckList } from './checklist';
 import { CLlist } from './mock-cl';
+import 'rxjs/add/operator/map';
 
+
+const httpOptions = {
+  headers: new HttpHeaders({ 'Content-Type': 'application/json' })
+};
 @Injectable({
   providedIn: 'root'
 })
 export class ClService {
+  school_list: AngularFirestoreCollection<any>;
+  school_documet: AngularFirestoreDocument<any>;
+  private cllist: CheckList[] = [];
+  listChanged = new Subject<CheckList[]>();
 
-  constructor() { }
+  constructor(
+    private http: HttpClient,
+    private db: AngularFirestore,
+  ) {}
 
-  getCllist(): Observable<CheckList[]>{
-    return of(CLlist);
+  getCllist(){
+    this.db
+    .collection('school-list')
+    .snapshotChanges()
+    .map(docArray=>{
+      return docArray.map(doc=>{
+        return{
+          id: doc.payload.doc.id,
+          title:doc.payload.doc.data().title,
+          content:doc.payload.doc.data().content,
+        };
+      });
+    })
+    .subscribe((lists: CheckList[])=>{
+      this.cllist=lists;
+      this.listChanged.next([...this.cllist]);
+    });
   }
 
-  getCl(id: number) : Observable<CheckList>{
-    return of(CLlist.find(cl => cl.id === id));
+  getCl(id: string): Observable<CheckList> {
+    return of(this.cllist.find(
+      list=>list.id===id
+    ));
   }
+
+
 }

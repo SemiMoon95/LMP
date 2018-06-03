@@ -1,5 +1,5 @@
 export class CheckList {
-    id: number;
+    id: string;
     title: string;
     content: string;
 }
