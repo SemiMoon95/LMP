@@ -77,4 +77,9 @@ export class AuthService {
     this.notify.update(error.message, 'error');
   }
 
+  signOut() {
+    this.afAuth.auth.signOut().then(() => {
+      this.router.navigate(['/']);
+    });
+  }
 }
