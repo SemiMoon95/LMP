@@ -3,6 +3,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { environment } from '../environments/environment';
+import { ReactiveFormsModule } from '@angular/forms';
+import { HttpModule } from '@angular/http';
 
 import { AngularFireModule } from 'angularfire2';
 import { AngularFirestoreModule } from 'angularfire2/firestore';
@@ -18,18 +20,21 @@ import { HowtouseComponent } from './howtouse/howtouse.component';
 
 import { MaterialModule } from './material.module';
 import { LoginComponent } from './login/login.component';
-import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { HttpClient, HttpClientModule} from '@angular/common/http';
 
 import { CoreModule } from './core/core.module';
 import { AuthService } from './core/auth.service';
-
+import { AddClComponent } from './add-cl/add-cl.component';
+import { AddClQuestionComponent } from './add-cl-question/add-cl-question.component';
 @NgModule({
   declarations: [
     AppComponent,
     ListComponent,
     ClDetailComponent,
     HowtouseComponent,
-    LoginComponent
+    LoginComponent,
+    AddClComponent,
+    AddClQuestionComponent
   ],
   imports: [
     BrowserModule,
@@ -37,12 +42,14 @@ import { AuthService } from './core/auth.service';
     AppRoutingModule,
     MaterialModule,
     HttpClientModule,
+    HttpModule,
     AngularFireModule.initializeApp(environment.firebase),
     AngularFirestoreModule,
     AngularFireStorageModule,
     AngularFireAuthModule,
     BrowserAnimationsModule,
     CoreModule,
+    ReactiveFormsModule,
   ],
   providers: [
     AuthService,

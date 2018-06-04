@@ -2,7 +2,7 @@ import { Component, OnInit, Input } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
 
-import { CheckList } from '../checklist';
+import { CheckList } from '../checklist/checklist';
 import { ClService } from '../cl.service';
 
 @Component({
@@ -11,7 +11,7 @@ import { ClService } from '../cl.service';
   styleUrls: ['./cl-detail.component.css']
 })
 export class ClDetailComponent implements OnInit {
-  @Input() cl: CheckList;
+  //@Input() cl: CheckList<T>;
 
   constructor(
     private route: ActivatedRoute,

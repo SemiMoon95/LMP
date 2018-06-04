@@ -1,0 +1,13 @@
+<div>
+  <form [formGroup]="form">
+    <div *ngFor="let checklist of checklists" class="form-row">
+        <app-add-cl-question [checklist]="checklist" [form]="form">
+      </app-add-cl-question>
+    </div>
+
+  </form>
+</div>
+
+<div>
+  <h2>Job Application for Heroes</h2>
+</div>

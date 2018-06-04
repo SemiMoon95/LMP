@@ -6,8 +6,7 @@ import { catchError, map, tap } from 'rxjs/operators';
 import { AngularFirestore, AngularFirestoreCollection, AngularFirestoreDocument } from "angularfire2/firestore";
 import { ArrayType } from '@angular/compiler/src/output/output_ast';
 
-import { CheckList } from './checklist';
-import { CLlist } from './mock-cl';
+import { CheckList } from './checklist/checklist';
 import 'rxjs/add/operator/map';
 
 
@@ -20,8 +19,8 @@ const httpOptions = {
 export class ClService {
   school_list: AngularFirestoreCollection<any>;
   school_documet: AngularFirestoreDocument<any>;
-  private cllist: CheckList[] = [];
-  listChanged = new Subject<CheckList[]>();
+  private cllist: CheckList<any>[] = [];
+  listChanged = new Subject<CheckList<any>[]>();
 
   constructor(
     private http: HttpClient,
@@ -36,22 +35,35 @@ export class ClService {
       return docArray.map(doc=>{
         return{
           id: doc.payload.doc.id,
-          title:doc.payload.doc.data().title,
-          content:doc.payload.doc.data().content,
+          title: doc.payload.doc.data().title,
+          ...doc.payload.doc.data()
         };
       });
     })
-    .subscribe((lists: CheckList[])=>{
+    .subscribe((lists: CheckList<any>[])=>{
       this.cllist=lists;
       this.listChanged.next([...this.cllist]);
+      console.log(lists);
     });
   }
 
-  getCl(id: string): Observable<CheckList> {
+  getCl(id: string): Observable<CheckList<any>> {
     return of(this.cllist.find(
       list=>list.id===id
     ));
   }
 
+  addDataToDatabase(checklist:CheckList<any>){
+    this.db.collection('school-list')
+    .add(checklist)
+  }
+
+    /** DELETE: delete the hero from the server */
+    deleteHero(hero_id){
+      this.db
+      .collection('hero-info')
+      .doc(hero_id)
+      .delete();
+    }
 
 }

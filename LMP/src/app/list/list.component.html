@@ -4,7 +4,7 @@
 
 <section id = "container">
     <div>
-      <span *ngFor = "let cl of checkLists" class="col-1-7">
+      <span *ngFor = "let cl of checkLists"  class="col-1-7">
           <mat-card class = "card">
             <mat-card-header>
               <mat-card-title>{{cl.title}}</mat-card-title>
@@ -18,7 +18,7 @@
     </div>
 </section>
 
-
+<button mat-button routerLink="/addCl">ADD</button>
 
 
 

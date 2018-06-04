@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { CheckList } from '../checklist';
+import { CheckList } from '../checklist/checklist';
 import { AngularFirestore } from 'angularfire2/firestore';
 
 import { ClService } from '../cl.service';
@@ -13,8 +13,7 @@ import { Observable, Subscribable, Subscription } from 'rxjs';
 export class ListComponent implements OnInit {
 
   cllist: Subscription;
-  checkLists: CheckList[];
-  
+  checkLists: CheckList<any>[]=[];
 
   constructor(private clservice: ClService, private db: AngularFirestore){
     const settings={timestampsInSnapshots: true};
@@ -31,4 +30,9 @@ export class ListComponent implements OnInit {
     );
     this.clservice.getCllist();
   }
+
+  add(): void{
+
+  }
+
 }
