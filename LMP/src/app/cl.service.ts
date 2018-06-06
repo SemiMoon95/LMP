@@ -6,7 +6,8 @@ import { catchError, map, tap } from 'rxjs/operators';
 import { AngularFirestore, AngularFirestoreCollection, AngularFirestoreDocument } from "angularfire2/firestore";
 import { ArrayType } from '@angular/compiler/src/output/output_ast';
 
-import { CheckList } from './checklist/checklist';
+import { CheckList } from './checklist';
+import { QuestionBase } from './question/question-base';
 import 'rxjs/add/operator/map';
 
 
@@ -19,8 +20,9 @@ const httpOptions = {
 export class ClService {
   school_list: AngularFirestoreCollection<any>;
   school_documet: AngularFirestoreDocument<any>;
-  cllist: CheckList<any>[] = [];
-  listChanged = new Subject<CheckList<any>[]>();
+  private cllist: CheckList[] = [];
+  listChanged = new Subject<CheckList[]>();
+
 
   constructor(
     private http: HttpClient,
@@ -35,35 +37,27 @@ export class ClService {
       return docArray.map(doc=>{
         return{
           id: doc.payload.doc.id,
-          title: doc.payload.doc.data().title,
-          ...doc.payload.doc.data()
+          title:doc.payload.doc.data().title,
+          subtitle:doc.payload.doc.data().subtitle,
+          category:doc.payload.doc.data().category,
         };
       });
     })
-    .subscribe((lists: CheckList<any>[])=>{
+    .subscribe((lists: CheckList[])=>{
       this.cllist=lists;
       this.listChanged.next([...this.cllist]);
-      console.log(lists);
     });
   }
 
-  getCl(id: string): Observable<CheckList<any>> {
+  getCl(id: string): Observable<CheckList> {
     return of(this.cllist.find(
       list=>list.id===id
     ));
   }
 
-  addDataToDatabase(checklist:CheckList<any>){
-    this.db.collection('school-list')
-    .add(checklist)
+  addCl(title: string, subtitle:string, category: string, questions: QuestionBase<any>[]){
+    const id = this.db.createId();
+    const newCl = {id, title, subtitle, category, questions}
+    this.db.collection('school-list').doc(id).set(newCl);
   }
-
-    /** DELETE: delete the hero from the server */
-    deleteHero(hero_id){
-      this.db
-      .collection('hero-info')
-      .doc(hero_id)
-      .delete();
-    }
-
 }

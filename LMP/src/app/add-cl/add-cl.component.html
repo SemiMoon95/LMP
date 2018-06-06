@@ -1,14 +1,25 @@
-<div>
-  <form [formGroup]="form">
-    <div *ngFor="let checklist of checklists" class="form-row">
-        <app-add-cl-question [checklist]="checklist" [form]="form">
-      </app-add-cl-question>
-    </div>
+<h3>Add new checklist</h3>
+<form>
+  <mat-form-field>
+    <input #newtitle matInput placeholder="insert new tilte">
+  </mat-form-field>
+  <mat-form-field>
+    <input #newsubtitle matInput placeholder="insert new subtitle">
+  </mat-form-field>
+  <mat-form-field>
+    <input #newcategory matInput placeholder="insert category">
+  </mat-form-field>
 
-  </form>
-</div>
+  <button mat-button (click) = "addCl(newtitle.value, newsubtitle.value, newcategory.value)">Submit</button>
+</form>
 
-<div>
-  <h2>Job Application for Heroes</h2>
-  <app-add-cl [checklists]="checklist_test"></app-add-cl>
-</div>
+
+
+<!--form [formGroup]="form">
+  <div *ngFor="let question of questions" class="form-row">
+      <app-question-form [question]="question" [form]="form"></app-question-form>
+  </div>
+  <button mat-button (click) = "newtextbox()">
+      addTextboxQuestion
+  </button>
+</form-->
