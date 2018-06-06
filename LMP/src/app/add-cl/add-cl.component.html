@@ -14,6 +14,45 @@
 </form>
 
 
+<form [formGroup] = "clForm">
+  <div>
+    <label >Title:
+      <input class="form-control" formControlName="title">
+    </label>
+  </div>
+  <div>
+    <label>Content:
+      <input class="form-control" formControlName="content">
+    </label>
+  </div>
+  <div formArrayName="newq" class="well well-lg">
+      <div *ngFor="let questions of newq.controls; let i=index" [formGroupName]="i" >
+        <!-- The repeated address template -->
+        <h4>Question #{{i + 1}}</h4>
+        <div style="margin-left: 1em;">
+          <div class="form-group">
+            <label class="center-block">Question Title:
+              <input class="form-control" formControlName="questionTitle">
+            </label>
+          </div>
+          <div class ="form-group">
+            <mat-checkbox><input class="form-control" fromControlName="checkboxes.option"> </mat-checkbox>
+          </div>
+        </div>
+        <br>
+        <!-- End of the repeated address template -->
+      </div>
+      <button (click)="addq()" type="button">Add Question</button>
+  </div>
+
+
+<button mat-button (click) = "onSubmit()">Submit</button>
+</form>
+
+
+
+<p>Form value: {{ clForm.value | json}}</p>
+
 <!--form [formGroup]="form">
   <div *ngFor="let question of questions" class="form-row">
       <app-question-form [question]="question" [form]="form"></app-question-form>

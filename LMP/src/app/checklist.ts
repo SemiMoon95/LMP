@@ -1,9 +1,24 @@
-import { QuestionBase }   from './question/question-base';
+//import { QuestionBase }   from './question/question-base';
 
 export class CheckList {
     id: string;
     title: string;
-    subtitle: string;
+    content: string;
     category: string;
-    questions: QuestionBase<any>[];
+    questions: QuestionBase[];
+}
+
+export class QuestionBase{
+    questionTitle: string;
+    checkboxes: CheckBox[];
+
+    constructor() {
+      this.questionTitle = '';
+      this.checkboxes = [];
+    }
+}
+
+export class CheckBox {
+    option: string;
+    checked: boolean;
 }
