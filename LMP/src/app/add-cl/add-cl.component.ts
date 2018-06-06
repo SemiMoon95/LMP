@@ -1,14 +1,11 @@
-import { Component, OnInit, Input } from '@angular/core';
-import { FormGroup } from '@angular/forms';
+import { Component, OnInit, Input, OnChanges } from '@angular/core';
+import { FormGroup, FormBuilder, Validators, FormArray } from '@angular/forms';
 import { Location } from '@angular/common';
 import { Router } from '@angular/router';
 
 import { ClService } from '../cl.service';
-import { QuestionBase } from '../question/question-base';
-import { TextboxQuestion } from '../question/question-textbox';
-import { DropdownQuestion } from '../question/question-dropdown';
 
-import { QuestionControlService } from '../question-control.service';
+import { QuestionBase, CheckBox, CheckList } from '../checklist';
 
 @Component({
   selector: 'app-add-cl',
@@ -18,33 +15,84 @@ import { QuestionControlService } from '../question-control.service';
 })
 export class AddClComponent implements OnInit {
 
-  //form: FormGroup;
-  questions: QuestionBase<any>[] = [];
+  clForm: FormGroup;
+  checklist: CheckList;
 
+  ngOnChanges() {
+    this.rebuildForm();
+  }
   
   constructor(
     private clservice: ClService,
     private location: Location,
     private router: Router,
-    //private qcs: QuestionControlService,
-  ) { }
+    private fb: FormBuilder,
+  ) { this.createForm() }
 
   ngOnInit() {
-    //this.form = this.qcs.toFormGroup(this.questions);
   }
-/*
-  addquestion(newq: QuestionBase<any>){
-    this.questions.push(newq);
+
+  createForm(){
+    this.clForm = this.fb.group({
+      title: ['', Validators.required],
+      content: '',
+      newq: this.fb.array([]),
+    });
   }
+<<<<<<< HEAD
   newtextbox(){
     this.addquestion(new TextboxQuestion({key: "a"}));
   }
   newdropdown(){
     this.addquestion(new DropdownQuestion());
+=======
+
+
+  setQuestions(questions: QuestionBase[]) {
+    const questionFGs = questions.map(question => this.fb.group(question));
+    const questionFormArray = this.fb.array(questionFGs);
+    this.clForm.setControl('newq', questionFormArray);
   }
-*/
-  addCl(title: string, subtitle: string, category: string){
-    this.clservice.addCl(title, subtitle, category, this.questions)
+
+  rebuildForm() {
+    this.clForm.reset({
+      title: this.checklist.title
+    });
+    this.setQuestions(this.checklist.questions);
+  }
+
+  get newq(): FormArray {
+    return this.clForm.get('newq') as FormArray;
+  };
+
+  addq() {
+    this.newq.push(this.fb.group(new QuestionBase()));
+>>>>>>> Jenny
+  }
+
+
+  onSubmit(){
+    this.checklist = this.prepareSaveCl();
+    this.clservice.addCl(this.checklist);
     this.router.navigate(['/list']);
+    this.rebuildForm();
+  }
+
+
+  prepareSaveCl(): CheckList{
+    const formModel = this.clForm.value;
+
+    const newqDeepCopy: QuestionBase[] = formModel.newq.map(
+      (question: QuestionBase) => Object.assign({}, question)
+    );
+
+    const saveCl: CheckList = {
+      id: this.clservice.getNewId(),
+      title: formModel.title as string,
+      content: formModel.content as string,
+      category: formModel.content as string,
+      questions: newqDeepCopy,
+    };
+    return saveCl;
   }
 }

@@ -6,8 +6,7 @@ import { catchError, map, tap } from 'rxjs/operators';
 import { AngularFirestore, AngularFirestoreCollection, AngularFirestoreDocument } from "angularfire2/firestore";
 import { ArrayType } from '@angular/compiler/src/output/output_ast';
 
-import { CheckList } from './checklist';
-import { QuestionBase } from './question/question-base';
+import { CheckList, QuestionBase } from './checklist';
 import 'rxjs/add/operator/map';
 
 
@@ -26,7 +25,10 @@ export class ClService {
   constructor(
     private http: HttpClient,
     private db: AngularFirestore,
-  ) {}
+  ) {
+    db.firestore.settings({ timestampsInSnapshots: true });
+    db.firestore.enablePersistence();
+}
 
   getCllist(){
     this.db
@@ -37,7 +39,7 @@ export class ClService {
         return{
           id: doc.payload.doc.id,
           title:doc.payload.doc.data().title,
-          subtitle:doc.payload.doc.data().subtitle,
+          content:doc.payload.doc.data().content,
           category:doc.payload.doc.data().category,
         };
       });
@@ -54,9 +56,13 @@ export class ClService {
     ));
   }
 
-  addCl(title: string, subtitle:string, category: string, questions: QuestionBase<any>[]){
+  addCl(cllist: CheckList){
+    console.log(cllist);
+    this.db.collection('school-list').add(cllist);
+  }
+
+  getNewId(): string{
     const id = this.db.createId();
-    const newCl = {id, title, subtitle, category, questions}
-    this.db.collection('school-list').doc(id).set(newCl);
+    return id;
   }
 }

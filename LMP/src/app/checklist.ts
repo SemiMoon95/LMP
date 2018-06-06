@@ -3,14 +3,22 @@
 export class CheckList {
     id: string;
     title: string;
-    subtitle: string;
+    content: string;
     category: string;
-    questions: ConditionBase<any>[];
+    questions: QuestionBase[];
 }
 
-export class ConditionBase<T>{
-    value: T;
-    controlType: string;
-    title : string;
-    
+export class QuestionBase{
+    questionTitle: string;
+    checkboxes: CheckBox[];
+
+    constructor() {
+      this.questionTitle = '';
+      this.checkboxes = [];
+    }
+}
+
+export class CheckBox {
+    option: string;
+    checked: boolean;
 }
