@@ -39,13 +39,6 @@ export class AddClComponent implements OnInit {
       newq: this.fb.array([]),
     });
   }
-<<<<<<< HEAD
-  newtextbox(){
-    this.addquestion(new TextboxQuestion({key: "a"}));
-  }
-  newdropdown(){
-    this.addquestion(new DropdownQuestion());
-=======
 
 
   setQuestions(questions: QuestionBase[]) {
@@ -67,7 +60,6 @@ export class AddClComponent implements OnInit {
 
   addq() {
     this.newq.push(this.fb.group(new QuestionBase()));
->>>>>>> Jenny
   }
 
 

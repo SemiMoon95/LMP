@@ -22,6 +22,7 @@ export class ClService {
   private cllist: CheckList[] = [];
   listChanged = new Subject<CheckList[]>();
 
+
   constructor(
     private http: HttpClient,
     private db: AngularFirestore,
