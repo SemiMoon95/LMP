@@ -13,6 +13,7 @@ import { ClService } from '../cl.service';
 export class ClDetailComponent implements OnInit {
   @Input() cl: CheckList;
 
+  id: string;
   constructor(
     private route: ActivatedRoute,
     private clservice: ClService,
@@ -24,8 +25,8 @@ export class ClDetailComponent implements OnInit {
   }
 
   getHero(): void{
-    //const id = +this.route.snapshot.paramMap.get('id');
-    //this.clservice.getCl(id).subscribe(cl => this.cl = cl);
+    this.id = this.route.snapshot.paramMap.get('id');
+    this.clservice.getCl(this.id).subscribe(cl => this.cl = cl);
   }
 
 }

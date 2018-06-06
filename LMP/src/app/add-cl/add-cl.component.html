@@ -1,0 +1,24 @@
+<h3>Add new checklist</h3>
+<form>
+  <mat-form-field>
+    <input #newtitle matInput placeholder="insert new tilte">
+  </mat-form-field>
+  <mat-form-field>
+    <input #newsubtitle matInput placeholder="insert new subtitle">
+  </mat-form-field>
+  <mat-form-field>
+    <input #newcategory matInput placeholder="insert category">
+  </mat-form-field>
+
+  <button mat-button (click) = "addCl(newtitle.value, newsubtitle.value, newcategory.value)">Submit</button>
+</form>
+
+
+<!--form [formGroup]="form">
+  <div *ngFor="let question of questions" class="form-row">
+      <app-question-form [question]="question" [form]="form"></app-question-form>
+  </div>
+  <button mat-button (click) = "newtextbox()">
+      addTextboxQuestion
+  </button>
+</form-->

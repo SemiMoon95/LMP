@@ -1,7 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { environment } from '../environments/environment';
 
 import { AngularFireModule } from 'angularfire2';
@@ -22,6 +22,8 @@ import { HttpClient, HttpClientModule } from '@angular/common/http';
 
 import { CoreModule } from './core/core.module';
 import { AuthService } from './core/auth.service';
+import { AddClComponent } from './add-cl/add-cl.component';
+import { QuestionFormComponent } from './question-form/question-form.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +31,9 @@ import { AuthService } from './core/auth.service';
     ListComponent,
     ClDetailComponent,
     HowtouseComponent,
-    LoginComponent
+    LoginComponent,
+    AddClComponent,
+    QuestionFormComponent
   ],
   imports: [
     BrowserModule,
@@ -43,6 +47,7 @@ import { AuthService } from './core/auth.service';
     AngularFireAuthModule,
     BrowserAnimationsModule,
     CoreModule,
+    ReactiveFormsModule,
   ],
   providers: [
     AuthService,

@@ -7,7 +7,7 @@ import { AngularFirestore, AngularFirestoreCollection, AngularFirestoreDocument 
 import { ArrayType } from '@angular/compiler/src/output/output_ast';
 
 import { CheckList } from './checklist';
-import { CLlist } from './mock-cl';
+import { QuestionBase } from './question/question-base';
 import 'rxjs/add/operator/map';
 
 
@@ -37,7 +37,8 @@ export class ClService {
         return{
           id: doc.payload.doc.id,
           title:doc.payload.doc.data().title,
-          content:doc.payload.doc.data().content,
+          subtitle:doc.payload.doc.data().subtitle,
+          category:doc.payload.doc.data().category,
         };
       });
     })
@@ -53,5 +54,9 @@ export class ClService {
     ));
   }
 
-
+  addCl(title: string, subtitle:string, category: string, questions: QuestionBase<any>[]){
+    const id = this.db.createId();
+    const newCl = {id, title, subtitle, category, questions}
+    this.db.collection('school-list').doc(id).set(newCl);
+  }
 }
