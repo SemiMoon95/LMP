@@ -19,7 +19,6 @@ import { QuestionControlService } from '../question-control.service';
 export class AddClComponent implements OnInit {
 
   //form: FormGroup;
-
   questions: QuestionBase<any>[] = [];
 
   
@@ -37,11 +36,9 @@ export class AddClComponent implements OnInit {
   addquestion(newq: QuestionBase<any>){
     this.questions.push(newq);
   }
-
   newtextbox(){
     this.addquestion(new TextboxQuestion({key: "a"}));
   }
-
   newdropdown(){
     this.addquestion(new DropdownQuestion());
   }
