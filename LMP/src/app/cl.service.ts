@@ -19,7 +19,7 @@ const httpOptions = {
 export class ClService {
   school_list: AngularFirestoreCollection<any>;
   school_documet: AngularFirestoreDocument<any>;
-  private cllist: CheckList<any>[] = [];
+  cllist: CheckList<any>[] = [];
   listChanged = new Subject<CheckList<any>[]>();
 
   constructor(

@@ -18,7 +18,7 @@ export class AddClComponent implements OnInit {
   form: FormGroup;
 
   constructor(private cls: ChecklistControlService, service: ClService) { 
-    //this.checklist_test=service.getCllist();
+    this.checklist_test=service.cllist;
   }
 
   ngOnInit() {
