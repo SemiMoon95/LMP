@@ -5,7 +5,7 @@ import { Router } from '@angular/router';
 
 import { ClService } from '../cl.service';
 
-import { QuestionBase, CheckBox, CheckList } from '../checklist';
+import { QuestionBase, CheckList } from '../checklist';
 
 @Component({
   selector: 'app-add-cl',
@@ -36,10 +36,18 @@ export class AddClComponent implements OnInit {
     this.clForm = this.fb.group({
       title: ['', Validators.required],
       content: '',
+      category: '',
       newq: this.fb.array([]),
     });
   }
 
+  get newq(): FormArray {
+    return this.clForm.get('newq') as FormArray;
+  };
+
+  addq() {
+    this.newq.push(this.fb.group(new QuestionBase()));
+  }
 
   setQuestions(questions: QuestionBase[]) {
     const questionFGs = questions.map(question => this.fb.group(question));
@@ -52,14 +60,6 @@ export class AddClComponent implements OnInit {
       title: this.checklist.title
     });
     this.setQuestions(this.checklist.questions);
-  }
-
-  get newq(): FormArray {
-    return this.clForm.get('newq') as FormArray;
-  };
-
-  addq() {
-    this.newq.push(this.fb.group(new QuestionBase()));
   }
 
 

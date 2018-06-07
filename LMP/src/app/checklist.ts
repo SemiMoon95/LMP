@@ -10,15 +10,24 @@ export class CheckList {
 
 export class QuestionBase{
     questionTitle: string;
-    checkboxes: CheckBox[];
+    questionExplain: string;
+    checkboxoption: string;
+    checked: boolean;
 
     constructor() {
       this.questionTitle = '';
-      this.checkboxes = [];
+      this.questionExplain = '';
+      this.checkboxoption = '';
     }
 }
-
+/*
 export class CheckBox {
     option: string;
     checked: boolean;
+
+    constructor(){
+        this.option = '';
+        this.checked = false;
+    }
 }
+*/

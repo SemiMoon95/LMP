@@ -58,7 +58,8 @@ export class ClService {
 
   addCl(cllist: CheckList){
     console.log(cllist);
-    this.db.collection('school-list').add(cllist);
+    const id = cllist.id;
+    this.db.collection('school-list').doc(id).set(cllist);
   }
 
   getNewId(): string{
