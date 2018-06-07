@@ -24,10 +24,16 @@ export class QuestionBase{
 export class CheckBox {
     option: string;
     checked: boolean;
+<<<<<<< HEAD
 
     constructor(){
         this.option = '';
         this.checked = false;
+=======
+    constructor(){
+        this.option='';
+        this.checked=false;
+>>>>>>> master
     }
 }
 */

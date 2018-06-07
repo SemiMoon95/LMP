@@ -1,4 +1,5 @@
 <h3>Add new checklist</h3>
+<<<<<<< HEAD
 
 <form [formGroup] = "clForm">
 
@@ -6,6 +7,13 @@
     <mat-form-field>
       <input matInput placeholder="insert Title" formControlName="title">
     </mat-form-field>
+=======
+<form [formGroup]="clForm">
+  <div>
+    <label>Title:
+      <input class="form-control" formControlName="title">
+    </label>
+>>>>>>> master
   </div>
 
   <div>
@@ -14,6 +22,7 @@
     </mat-form-field>
   </div>
 
+<<<<<<< HEAD
   <div formArrayName="newq" class="well well-lg">
       <div *ngFor="let address of newq.controls; let i=index" [formGroupName]="i" >
         <!-- The repeated address template -->
@@ -41,19 +50,31 @@
       <button mat-button (click)="addq()" type="button">Add Question</button>
   </div>
 
+=======
+  <!--Question Array-->
+  <div formArrayName="newq">
+    <div class="newq-container" *ngFor="let question of getNewq(clForm); let i=index">
+      <h4>Question #{{i+1}}</h4>
+      <div class="form-control" [formGroupName]="i">
+        <label> Question Title: 
+            <input class="form-control" formControlName="questionTitle">
+            <button (click)="addcb(i)" type="button">Add Option</button>
+        </label>
+        <!--Option Array-->
+        <div class="checkboxes-container" formArrayName="checkboxes">
+          <div [formGroupName]="j" *ngFor="let checkbox of getCheckbox(question); let j=index">
+              <label> Option: 
+                  <input class="form-control" formControlName="option">
+              </label>
+          </div>
+        </div><!--Option Array-->
+      </div>
+    </div>
+  </div><!--question array-->
+>>>>>>> master
 
-<button mat-button (click) = "onSubmit()">Submit</button>
+    <button (click)="addq()" type="button">Add Question</button>
+  <button mat-button (click)="onSubmit()">Submit</button>
 </form>
 
-
-
 <p>Form value: {{ clForm.value | json}}</p>
-
-<!--form [formGroup]="form">
-  <div *ngFor="let question of questions" class="form-row">
-      <app-question-form [question]="question" [form]="form"></app-question-form>
-  </div>
-  <button mat-button (click) = "newtextbox()">
-      addTextboxQuestion
-  </button>
-</form-->
