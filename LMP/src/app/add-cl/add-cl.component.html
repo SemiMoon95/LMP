@@ -1,22 +1,7 @@
 <h3>Add new checklist</h3>
-<form>
-  <mat-form-field>
-    <input #newtitle matInput placeholder="insert new tilte">
-  </mat-form-field>
-  <mat-form-field>
-    <input #newsubtitle matInput placeholder="insert new subtitle">
-  </mat-form-field>
-  <mat-form-field>
-    <input #newcategory matInput placeholder="insert category">
-  </mat-form-field>
-
-  <button mat-button (click) = "addCl(newtitle.value, newsubtitle.value, newcategory.value)">Submit</button>
-</form>
-
-
-<form [formGroup] = "clForm">
+<form [formGroup]="clForm">
   <div>
-    <label >Title:
+    <label>Title:
       <input class="form-control" formControlName="title">
     </label>
   </div>
@@ -25,39 +10,30 @@
       <input class="form-control" formControlName="content">
     </label>
   </div>
-  <div formArrayName="newq" class="well well-lg">
-      <div *ngFor="let questions of newq.controls; let i=index" [formGroupName]="i" >
-        <!-- The repeated address template -->
-        <h4>Question #{{i + 1}}</h4>
-        <div style="margin-left: 1em;">
-          <div class="form-group">
-            <label class="center-block">Question Title:
-              <input class="form-control" formControlName="questionTitle">
-            </label>
+
+  <!--Question Array-->
+  <div formArrayName="newq">
+    <div class="newq-container" *ngFor="let question of getNewq(clForm); let i=index">
+      <h4>Question #{{i+1}}</h4>
+      <div class="form-control" [formGroupName]="i">
+        <label> Question Title: 
+            <input class="form-control" formControlName="questionTitle">
+            <button (click)="addcb(i)" type="button">Add Option</button>
+        </label>
+        <!--Option Array-->
+        <div class="checkboxes-container" formArrayName="checkboxes">
+          <div [formGroupName]="j" *ngFor="let checkbox of getCheckbox(question); let j=index">
+              <label> Option: 
+                  <input class="form-control" formControlName="option">
+              </label>
           </div>
-          <div class ="form-group">
-            <mat-checkbox><input class="form-control" fromControlName="checkboxes.option"> </mat-checkbox>
-          </div>
-        </div>
-        <br>
-        <!-- End of the repeated address template -->
+        </div><!--Option Array-->
       </div>
-      <button (click)="addq()" type="button">Add Question</button>
-  </div>
+    </div>
+  </div><!--question array-->
 
-
-<button mat-button (click) = "onSubmit()">Submit</button>
+    <button (click)="addq()" type="button">Add Question</button>
+  <button mat-button (click)="onSubmit()">Submit</button>
 </form>
 
-
-
 <p>Form value: {{ clForm.value | json}}</p>
-
-<!--form [formGroup]="form">
-  <div *ngFor="let question of questions" class="form-row">
-      <app-question-form [question]="question" [form]="form"></app-question-form>
-  </div>
-  <button mat-button (click) = "newtextbox()">
-      addTextboxQuestion
-  </button>
-</form-->

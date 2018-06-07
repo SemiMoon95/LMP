@@ -21,4 +21,8 @@ export class QuestionBase{
 export class CheckBox {
     option: string;
     checked: boolean;
+    constructor(){
+        this.option='';
+        this.checked=false;
+    }
 }

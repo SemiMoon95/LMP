@@ -1,5 +1,5 @@
 import { Component, OnInit, Input, OnChanges } from '@angular/core';
-import { FormGroup, FormBuilder, Validators, FormArray } from '@angular/forms';
+import { FormGroup, FormBuilder, Validators, FormArray, FormControl } from '@angular/forms';
 import { Location } from '@angular/common';
 import { Router } from '@angular/router';
 
@@ -27,19 +27,33 @@ export class AddClComponent implements OnInit {
     private location: Location,
     private router: Router,
     private fb: FormBuilder,
-  ) { this.createForm() }
+  ) { this.createForm(), this.createCkForm() }
 
   ngOnInit() {
+    this.createForm();
   }
 
-  createForm(){
+  createForm(): FormGroup{
     this.clForm = this.fb.group({
       title: ['', Validators.required],
       content: '',
-      newq: this.fb.array([]),
+      newq: this.fb.array([this.createCkForm()]),
+    });
+    return this.clForm;
+  }
+
+  createCkForm(): FormGroup{
+    return this.fb.group({
+      questionTitle:'',
+      checkboxes: this.fb.array([this.initOption()])
     });
   }
 
+  initOption(): FormGroup{
+    return this.fb.group({
+      option: '',
+    });
+  }
 
   setQuestions(questions: QuestionBase[]) {
     const questionFGs = questions.map(question => this.fb.group(question));
@@ -58,10 +72,17 @@ export class AddClComponent implements OnInit {
     return this.clForm.get('newq') as FormArray;
   };
 
+
   addq() {
-    this.newq.push(this.fb.group(new QuestionBase()));
+    const control=<FormArray>this.clForm.get('newq');
+    control.push(this.createCkForm());
+    //this.newq.push(this.fb.group(this.clForm));
   }
 
+  addcb(j){
+    const control = <FormArray>this.clForm.get('newq')['controls'][j].get('checkboxes');
+    control.push(this.initOption());
+  }
 
   onSubmit(){
     this.checklist = this.prepareSaveCl();
@@ -87,4 +108,14 @@ export class AddClComponent implements OnInit {
     };
     return saveCl;
   }
+
+  getNewq(form){
+    return form.controls.newq.controls;
+  }
+
+  getCheckbox(form){
+    return form.controls.checkboxes.controls;
+  }
+
+
 }
