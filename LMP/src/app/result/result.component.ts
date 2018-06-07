@@ -14,6 +14,7 @@ export class ResultComponent implements OnInit {
   cl: CheckList;
   id: string;
   progressValue: number;
+  show: boolean = false;
 
   constructor(
     private route: ActivatedRoute,
@@ -22,14 +23,15 @@ export class ResultComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.getCl();
-    this.getResultValue();
   }
 
-  getCl(): void{
+  getResult(): void{
     this.id = this.route.snapshot.paramMap.get('id');
+    console.log(this.id);
     this.clservice.getResult(this.id).subscribe(cl => this.cl = cl);
     console.log(this.cl);
+    this.getResultValue();
+    this.show = true;
   }
 
   getResultValue(){
