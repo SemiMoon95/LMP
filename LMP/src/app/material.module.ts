@@ -9,6 +9,8 @@ import {
     MatToolbarModule,
     MatInputModule,
     MatCheckboxModule,
+    MatProgressBarModule,
+    MatGridListModule,
  } from '@angular/material';
 
 @NgModule({
@@ -22,6 +24,8 @@ import {
         MatToolbarModule,
         MatInputModule,
         MatCheckboxModule,
+        MatProgressBarModule,
+        MatGridListModule,
     ],
     exports: [
         MatButtonModule,
@@ -33,6 +37,8 @@ import {
         MatToolbarModule,
         MatInputModule,
         MatCheckboxModule,
+        MatProgressBarModule,
+        MatGridListModule,
     ]
 })
 

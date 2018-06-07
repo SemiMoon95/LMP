@@ -21,6 +21,12 @@ export class ClService {
   school_documet: AngularFirestoreDocument<any>;
   private cllist: CheckList[] = [];
   listChanged = new Subject<CheckList[]>();
+<<<<<<< HEAD
+=======
+
+  private resultcl: CheckList[] = [];
+  resultChanged = new Subject<CheckList[]>();
+>>>>>>> 1e039f7370217dbd36cad59a785afa5847694c02
 
 
   constructor(
@@ -53,6 +59,7 @@ export class ClService {
   }
 
   getCl(id: string): Observable<CheckList> {
+    //console.log(this.cllist);
     return of(this.cllist.find(
       list=>list.id===id
     ));
@@ -64,10 +71,43 @@ export class ClService {
     this.db.collection('school-list').doc(id).set(cllist);
   }
 
+<<<<<<< HEAD
+=======
+  getResultList(){
+    this.db
+    .collection('result')
+    .snapshotChanges()
+    .map(docArray=>{
+      return docArray.map(doc=>{
+        return{
+          id: doc.payload.doc.id,
+          title:doc.payload.doc.data().title,
+          content:doc.payload.doc.data().content,
+          category:doc.payload.doc.data().category,
+          questions:doc.payload.doc.data().questions,
+        };
+      });
+    })
+    .subscribe((lists: CheckList[])=>{
+      this.resultcl=lists;
+      this.resultChanged.next([...this.resultcl]);
+    });
+    console.log(this.resultcl);
+  }
+
+  getResult(id: string): Observable<CheckList> {
+    console.log(this.resultcl);
+    return of(this.resultcl.find(
+      list=>list.id===id
+    ));
+  }
+
+>>>>>>> 1e039f7370217dbd36cad59a785afa5847694c02
   addResult(cllist: CheckList){
     console.log(cllist);
     const id = cllist.id;
     this.db.collection('result').doc(id).set(cllist);
+    this.getResultList();
   }
 
   getNewId(): string{
