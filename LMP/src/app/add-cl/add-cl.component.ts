@@ -52,6 +52,7 @@ export class AddClComponent implements OnInit {
   initOption(): FormGroup{
     return this.fb.group({
       option: '',
+      checked: false
     });
   }
 
@@ -76,7 +77,6 @@ export class AddClComponent implements OnInit {
   addq() {
     const control=<FormArray>this.clForm.get('newq');
     control.push(this.createCkForm());
-    //this.newq.push(this.fb.group(this.clForm));
   }
 
   addcb(j){
