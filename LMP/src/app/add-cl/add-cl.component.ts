@@ -5,7 +5,7 @@ import { Router } from '@angular/router';
 
 import { ClService } from '../cl.service';
 
-import { QuestionBase, CheckBox, CheckList } from '../checklist';
+import { QuestionBase, CheckList } from '../checklist';
 
 @Component({
   selector: 'app-add-cl',
@@ -52,7 +52,7 @@ export class AddClComponent implements OnInit {
   initOption(): FormGroup{
     return this.fb.group({
       option: '',
-      checked: false
+      checked: false,
     });
   }
 

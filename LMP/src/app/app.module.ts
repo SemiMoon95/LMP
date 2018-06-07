@@ -24,6 +24,7 @@ import { HttpClient, HttpClientModule} from '@angular/common/http';
 import { CoreModule } from './core/core.module';
 import { AuthService } from './core/auth.service';
 import { AddClComponent } from './add-cl/add-cl.component';
+import { ResultComponent } from './result/result.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -32,6 +33,7 @@ import { AddClComponent } from './add-cl/add-cl.component';
     HowtouseComponent,
     LoginComponent,
     AddClComponent,
+    ResultComponent,
   ],
   imports: [
     BrowserModule,

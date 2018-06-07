@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Location } from '@angular/common';
 
 import { CheckList } from '../checklist';
@@ -11,22 +11,39 @@ import { ClService } from '../cl.service';
   styleUrls: ['./cl-detail.component.css']
 })
 export class ClDetailComponent implements OnInit {
-  @Input() cl: CheckList;
+  
+  cl: CheckList;
+  copyCl: CheckList;
+  
+  istrue: boolean = false;
 
   id: string;
   constructor(
     private route: ActivatedRoute,
     private clservice: ClService,
-    private location: Location
+    private location: Location,
+    private router: Router,
   ) { }
 
   ngOnInit() {
-    this.getHero();
+    this.getCl();
+    this.copyList();
   }
 
-  getHero(): void{
+  getCl(): void{
     this.id = this.route.snapshot.paramMap.get('id');
     this.clservice.getCl(this.id).subscribe(cl => this.cl = cl);
+    console.log(this.cl);
   }
 
+  copyList(): void{
+    this.copyCl = Object.assign({},this.cl);
+    this.copyCl.id = this.clservice.getNewId();
+    console.log(this.copyCl);
+  }
+
+  goResult(){
+    this.clservice.addResult(this.copyCl);
+    this.router.navigate(["/result/"+this.copyCl.id]);
+  }
 }

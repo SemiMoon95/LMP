@@ -1,8 +1,24 @@
-<div *ngIf="cl">
-  <h2>제목 : {{ cl.title | uppercase}}</h2>
+<div *ngIf="copyCl">
+  <h2>제목 : {{ copyCl.title | uppercase}}</h2>
   <div>
     <p>
-      {{ cl.content }}
+      설명: {{ copyCl.content }}
     </p>
   </div>
+  <!--div>
+    {{ copyCl.questions[0].questionTitle }}
+    {{ copyCl.questions[0].checkboxes[0].option }}
+  </div-->
+
+  <div *ngFor="let question of copyCl.questions; let i=index">
+    <h4>Question #{{i+1}} {{question.questionTitle}}</h4>
+
+    <div *ngFor="let checkbox of question.checkboxes">
+      <mat-checkbox [(ngModel)]="checkbox.checked"> {{checkbox.option}}, {{checkbox.checked}}</mat-checkbox>
+    </div>
+  </div>
 </div>
+
+<button mat-button (click)="goResult()">Show result</button>
+
+<!--button mat-button routerLink="/result/{{copyCl.id}}">Show result</button-->
