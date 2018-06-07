@@ -1,5 +1,4 @@
 //import { QuestionBase }   from './question/question-base';
-
 export class CheckList {
     id: string;
     title: string;
@@ -10,30 +9,19 @@ export class CheckList {
 
 export class QuestionBase{
     questionTitle: string;
-    questionExplain: string;
-    checkboxoption: string;
-    checked: boolean;
+    checkboxes: CheckBox[];
 
     constructor() {
       this.questionTitle = '';
-      this.questionExplain = '';
-      this.checkboxoption = '';
+      this.checkboxes = [];
     }
 }
-/*
+
 export class CheckBox {
     option: string;
     checked: boolean;
-<<<<<<< HEAD
-
-    constructor(){
-        this.option = '';
-        this.checked = false;
-=======
     constructor(){
         this.option='';
         this.checked=false;
->>>>>>> master
     }
 }
-*/

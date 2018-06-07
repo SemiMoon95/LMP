@@ -1,56 +1,17 @@
 <h3>Add new checklist</h3>
-<<<<<<< HEAD
-
-<form [formGroup] = "clForm">
-
-  <div>
-    <mat-form-field>
-      <input matInput placeholder="insert Title" formControlName="title">
-    </mat-form-field>
-=======
 <form [formGroup]="clForm">
   <div>
     <label>Title:
       <input class="form-control" formControlName="title">
     </label>
->>>>>>> master
   </div>
 
   <div>
-    <mat-form-field>
-      <input matInput placeholder="insert Content" fromControlName="content">
-    </mat-form-field>
-  </div>
+      <label>Content:
+        <input class="form-control" formControlName="content">
+      </label>
+    </div>
 
-<<<<<<< HEAD
-  <div formArrayName="newq" class="well well-lg">
-      <div *ngFor="let address of newq.controls; let i=index" [formGroupName]="i" >
-        <!-- The repeated address template -->
-        <h4>Question #{{i + 1}}</h4>
-        <div style="margin-left: 1em;">
-          <div class="form-group">
-            <label class="center-block">QuestionTitle:
-              <input class="form-control" formControlName="questionTitle">
-            </label>
-          </div>
-          <div class="form-group">
-            <label class="center-block">QuestionExplain:
-              <input class="form-control" formControlName="questionExplain">
-            </label>
-          </div>
-          <div class="form-group">
-            <label class="center-block">Checkbox:
-              <mat-checkbox><input class="form-control" formControlName="checkboxoption"></mat-checkbox>
-            </label>
-          </div>
-        </div>
-        <br>
-        <!-- End of the repeated address template -->
-      </div>  
-      <button mat-button (click)="addq()" type="button">Add Question</button>
-  </div>
-
-=======
   <!--Question Array-->
   <div formArrayName="newq">
     <div class="newq-container" *ngFor="let question of getNewq(clForm); let i=index">
@@ -71,7 +32,6 @@
       </div>
     </div>
   </div><!--question array-->
->>>>>>> master
 
     <button (click)="addq()" type="button">Add Question</button>
   <button mat-button (click)="onSubmit()">Submit</button>

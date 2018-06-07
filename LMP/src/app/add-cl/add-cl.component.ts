@@ -37,24 +37,11 @@ export class AddClComponent implements OnInit {
     this.clForm = this.fb.group({
       title: ['', Validators.required],
       content: '',
-<<<<<<< HEAD
-      category: '',
-      newq: this.fb.array([]),
-=======
       newq: this.fb.array([this.createCkForm()]),
->>>>>>> master
     });
     return this.clForm;
   }
 
-<<<<<<< HEAD
-  get newq(): FormArray {
-    return this.clForm.get('newq') as FormArray;
-  };
-
-  addq() {
-    this.newq.push(this.fb.group(new QuestionBase()));
-=======
   createCkForm(): FormGroup{
     return this.fb.group({
       questionTitle:'',
@@ -65,8 +52,8 @@ export class AddClComponent implements OnInit {
   initOption(): FormGroup{
     return this.fb.group({
       option: '',
+      checked: false,
     });
->>>>>>> master
   }
 
   setQuestions(questions: QuestionBase[]) {
@@ -82,8 +69,6 @@ export class AddClComponent implements OnInit {
     this.setQuestions(this.checklist.questions);
   }
 
-<<<<<<< HEAD
-=======
   get newq(): FormArray {
     return this.clForm.get('newq') as FormArray;
   };
@@ -99,7 +84,6 @@ export class AddClComponent implements OnInit {
     const control = <FormArray>this.clForm.get('newq')['controls'][j].get('checkboxes');
     control.push(this.initOption());
   }
->>>>>>> master
 
   onSubmit(){
     this.checklist = this.prepareSaveCl();
