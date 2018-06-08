@@ -21,12 +21,9 @@ export class ClService {
   school_documet: AngularFirestoreDocument<any>;
   private cllist: CheckList[] = [];
   listChanged = new Subject<CheckList[]>();
-<<<<<<< HEAD
-=======
 
   private resultcl: CheckList[] = [];
   resultChanged = new Subject<CheckList[]>();
->>>>>>> 1e039f7370217dbd36cad59a785afa5847694c02
 
 
   constructor(
@@ -71,8 +68,6 @@ export class ClService {
     this.db.collection('school-list').doc(id).set(cllist);
   }
 
-<<<<<<< HEAD
-=======
   getResultList(){
     this.db
     .collection('result')
@@ -102,7 +97,6 @@ export class ClService {
     ));
   }
 
->>>>>>> 1e039f7370217dbd36cad59a785afa5847694c02
   addResult(cllist: CheckList){
     console.log(cllist);
     const id = cllist.id;

@@ -34,15 +34,11 @@ export class ResultComponent implements OnInit {
 
   getResult(): void{
     this.id = this.route.snapshot.paramMap.get('id');
-<<<<<<< HEAD
-
-=======
     console.log(this.id);
     this.clservice.getResult(this.id).subscribe(cl => this.cl = cl);
     console.log(this.cl);
     this.getResultValue();
     this.show = true;
->>>>>>> 1e039f7370217dbd36cad59a785afa5847694c02
   }
 
   getResultValue(){
