@@ -1,0 +1,77 @@
+
+.bg{
+    background-color: rgb(243, 242, 242);
+    min-height: 100%;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+h3{
+    font-family: Helvetica;
+    font-weight: 300;
+    color: #636363;
+    padding-top: 30px;
+    padding-bottom: 30px;
+    text-align: center;
+    margin:0;
+}
+mat-card {
+    max-width: 800px;
+    margin: 2em auto;
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
+.clTitle {
+    display: flex;
+    flex-direction: column;
+    padding-left: 20px;
+    padding-right: 20px;
+    font-size: 20px;
+  }
+
+  .clContent{
+    display: flex;
+    flex-direction: column;
+    padding-left: 20px;
+    padding-right: 20px;
+    font-size: 13px;
+  }
+
+  .qTitle{
+    display: flex;
+    flex-direction: column;
+    padding-left: 20px;
+    padding-right: 20px;
+    font-size: 17px;
+    margin: 0;
+  }
+  
+  .ckOption{
+    width: 600px;
+    flex-direction: column;
+    padding-left: 7px;
+    padding-right: 10px;
+    font-size: 15px;
+    margin: 0;
+  }
+
+  .ckbx{
+    margin-left: 20px;
+  }
+
+  .xbtn{
+      background-color: white;
+      font-size: 15px;
+      color:rgb(131, 131, 131);
+      margin:0;
+  }
+
+  .space{
+    margin-left: 20px;
+  }
+
+  .btnToggle{
+      align-content: center;
+      text-align: center;
+  }

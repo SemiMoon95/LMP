@@ -1,43 +1,55 @@
-<h3>Add new checklist</h3>
-<form [formGroup]="clForm">
-  <div>
-    <mat-form-field>Title:
-      <input matInput formControlName="title">
-    </mat-form-field>
-  </div>
+<div class="bg">
+  <h3> ADD NEW CHECKLIST</h3>
+  <div class="checkForm">
+    <form [formGroup]="clForm">
+      <mat-card>
+        <div>
+          <mat-form-field class="clTitle">
+            <input matInput placeholder="Title" formControlName="title">
+          </mat-form-field>
+        </div>
+        <div>
+          <mat-form-field class="clContent">
+            <input matInput placeholder="Content" formControlName="content">
+          </mat-form-field>
+        </div>
+      </mat-card>
 
-  <div>
-      <mat-form-field>Content:
-        <input matInput formControlName="content">
-      </mat-form-field>
-    </div>
+      <!--Question Array-->
+      <div formArrayName="newq">
+        <mat-card *ngFor="let question of getNewq(clForm); let i=index">
+          <mat-card-content class="qContent">
+            <div [formGroupName]="i">
+              <mat-form-field class="qTitle">
+                <input matInput placeholder="Question{{i+1}}  Title" formControlName="questionTitle">
+              </mat-form-field>
 
-  <!--Question Array-->
-  <div formArrayName="newq">
-    <mat-card *ngFor="let question of getNewq(clForm); let i=index">
-      <mat-card-content>
-          <div [formGroupName]="i">
-            <mat-form-field> Question#{{i+1}} Title: 
-                <input matInput  formControlName="questionTitle">
-            </mat-form-field>
-            <button mat-button (click)="addcb(i)" type="button">Add Option</button>
-            <!--Option Array-->
-            <div formArrayName="checkboxes">
-              <div [formGroupName]="j" *ngFor="let checkbox of getCheckbox(question); let j=index">
-                  <mat-form-field>
-                      <input matInput formControlName="option" placeholder="option {{j+1}}">
+              <!--Option Array-->
+              <div formArrayName="checkboxes">
+                <div [formGroupName]="j" *ngFor="let checkbox of getCheckbox(question); let j=index">
+                  <mat-checkbox class="ckbx"></mat-checkbox>
+                  <mat-form-field class="ckOption">
+                    <input matInput placeholder="option {{j+1}}" formControlName="option">
                   </mat-form-field>
+                  <button class="xbtn" mat-icon-button (click)="removecb(i,j)" type="button">×</button>
+                </div>
               </div>
-            </div><!--Option Array-->
-          </div>
-      </mat-card-content>
-      <mat-card-actions>
-        <button mat-button (click)="addq()" type="button">Add Question</button>
-      </mat-card-actions>
-    </mat-card>
-  </div>
+              <!--Option Array-->
+            </div>
+            <div class="space">
+              <button class="obtn" mat-raised-button (click)="addcb(i)" type="button">Add Option</button>
+            </div>
+          </mat-card-content>
+        </mat-card>
 
-  <div>
-      <button mat-raised-button (click)="onSubmit()">Submit</button>
+        <mat-card class="btnToggle">
+            <mat-button-toggle-group>
+                <mat-button-toggle (click)="addq()" type="button">Add Question</mat-button-toggle>
+                <mat-button-toggle *ngIf="getNewq(clForm).length>1" (click)="removeq(i)">Remove Question</mat-button-toggle>
+                <mat-button-toggle mat-raised-button (click)="onSubmit()">Submit</mat-button-toggle>
+              </mat-button-toggle-group>
+        </mat-card>
+      </div>
+    </form>
   </div>
-<p>Form value: {{ clForm.value | json}}</p>
+</div>
