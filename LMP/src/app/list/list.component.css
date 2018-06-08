@@ -1,14 +1,49 @@
+
 .bg{
-    background-color: rgba(236, 236, 236, 0.774);
-    height: 100%;
+    background-color: rgb(243, 242, 242);
+    min-height: 100%;
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
 }
 
-#container{
+.container{
     display: flex;
     width: 100%;
+}
+
+.grid {
+    margin: 0;
+}
+.col-1-4 {
+    width: 240px;
+    height: 240px;
+}
+
+.grid-pad {
+    padding: 15px;
+    margin: auto;
+}
+
+[class*='col-'] {
+    float: left;
+    padding:0;
+}
+
+
+mat-card {
+    margin: 1em auto;
+    text-align: center;
+    margin-left: 16px;
+    margin-right: 16px;
+    padding:5px;
+}
+
+#addmat{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    max-width: 50%;
 }
 
 .see{
@@ -21,20 +56,56 @@
     font-size: 30px;
 }
 
-.main{
-    display: flex;
-    margin-left: 5%;
-    width: 90%;
-    height: auto;
-}
-
-mat-grid-tile{
-
-}
-
-.addbox{
-}
 
 .add{
     background-color: #F05F40;;
+}
+
+.for{
+    
+    font-weight: 300;
+    font-family: 'Merriweather', 'Helvetica Neue', Arial, sans-serif;
+}
+
+#cardtitle{
+    width: 230px;
+    padding: 5px;
+    padding-top: 15px;
+    height: 50px;
+    align-items: center;
+    text-align: center;
+    margin: 0;
+    font-size: 16px;
+    justify-content: center;
+    font-weight: 400;
+}
+
+mat-divider{
+    border-top-width: 2px;
+}
+
+mat-card-content{
+    width: 230px;
+    padding: 5px;
+    height: 118px;
+    margin: 0;
+    background-color: rgb(199, 197, 197);
+}
+
+
+
+mat-card-actions{
+    padding-top: 14px;
+    width: 240px;
+    height: 25px;
+    padding: 0;
+    margin: 0;
+    align-items: center;
+}
+#start{
+    width: 240px;
+    height: 42px;
+    padding:0;
+    background-color: #F05F40;
+    color: white;
 }

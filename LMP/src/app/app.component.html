@@ -1,25 +1,35 @@
 <mat-divider></mat-divider>
 <mat-toolbar class="toolbar">
-  <span><a class="title" routerLink="/">{{title | uppercase }}</a></span>
+    <span><a class="title" routerLink="/">{{title | uppercase }}</a></span>
 
-  <span class="spacer"></span>
+    <span class="spacer"></span>
 
-  <span>
-      <a class="menu" routerLink="/about">ABOUT</a>
-  </span>
-  <span class="blank"></span>
-  <span>
-      <a class="menu" routerLink="/contact">CONTACT</a>
-  </span>
-  <span class="blank"></span>
-  <span>
-      <div *ngIf="!(auth.user | async); else alreadyLoggedIn">
-          <a class="menu" routerLink="/login">LOGIN</a>
-      </div>
-      <ng-template #alreadyLoggedIn>
-          <button (click)="logout()">LOGOUT</button>
-      </ng-template>
-  </span>
+    <span>
+        <a class="menu" routerLink="/about">ABOUT</a>
+    </span>
+    <span class="blank"></span>
+    <span>
+        <a class="menu" routerLink="/contact">CONTACT</a>
+    </span>
+    <span class="blank"></span>
+    <span>
+        <div *ngIf="(auth.user | async); else gotoLogin">
+            <a class="menu" routerLink="/mypage">MYPAGE</a>
+        </div>
+        <ng-template #gotoLogin>
+            <a class="menu" routerLink="/login">MYPAGE</a>
+        </ng-template>
+    </span>
+    <span class="blank"></span>
+    <span id="sbtn">
+        <div *ngIf="!(auth.user | async); else alreadyLoggedIn">
+            <!--a class="menu" routerLink="/login">LOGIN</a-->
+            <button class="tbtn" (click)="signInWithGoogle()">LOGIN</button>
+        </div>
+        <ng-template #alreadyLoggedIn>
+            <button class="tbtn" (click)="logout()">LOGOUT</button>
+        </ng-template>
+    </span>
 
   
 </mat-toolbar>

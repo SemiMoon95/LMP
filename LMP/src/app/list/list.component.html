@@ -3,23 +3,26 @@
   SEE ALL CHECKLISTS
 </h2>
 
-  <section class="main">
-    <mat-card class="card">
-      <button mat-fab class="add" routerLink="/addcl"><mat-icon>add</mat-icon></button>
-    </mat-card>
+  <section class="container">
+    <div class="grid grid-pad">
 
-    <mat-card class="card" *ngFor = "let cl of checkLists">
-      <mat-card-header>
-        <mat-card-title><h3>Title: {{cl.title}}</h3></mat-card-title>
-      </mat-card-header>
-      <mat-card-content>
-        <p>{{cl.content}}</p>
-      </mat-card-content>
-      <mat-card-actions>
-        <button mat-button routerLink="/detail/{{cl.id}}">Start Checking</button>
-      </mat-card-actions>
-    </mat-card>
+      <mat-card class="col-1-4" id="addmat">
+        <button mat-fab class="add" routerLink="/addcl"><mat-icon>add</mat-icon></button>
+      </mat-card>
+
+      <mat-card class="col-1-4 for" *ngFor = "let cl of checkLists">
+        <div id="cardtitle">{{cl.title | uppercase}}</div>
+        <mat-divider></mat-divider>
+
+        <mat-card-content id="cardcontent">{{cl.content}}</mat-card-content>
+
+        <mat-card-actions>
+          <button id="start" mat-button routerLink="/detail/{{cl.id}}">START CHECKING</button>
+        </mat-card-actions>
+      </mat-card>
+    </div>
   </section>
+
   <!--section class="main">
     <mat-grid-list id="container" cols="3" rowHeight="1:1">
 

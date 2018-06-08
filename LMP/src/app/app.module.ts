@@ -18,7 +18,6 @@ import { AppRoutingModule } from './/app-routing.module';
 import { HowtouseComponent } from './howtouse/howtouse.component';
 
 import { MaterialModule } from './material.module';
-import { LoginComponent } from './login/login.component';
 import { HttpClient, HttpClientModule} from '@angular/common/http';
 
 import { CoreModule } from './core/core.module';
@@ -31,7 +30,6 @@ import { ResultComponent } from './result/result.component';
     ListComponent,
     ClDetailComponent,
     HowtouseComponent,
-    LoginComponent,
     AddClComponent,
     ResultComponent,
   ],
