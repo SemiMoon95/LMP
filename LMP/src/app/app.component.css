@@ -25,3 +25,19 @@ a {
     color: #f05f40;
     font-size: 22px;
 }
+
+.tbtn{
+    background-color: white;
+    border: none;
+    color: black;
+    padding: 0;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 15px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+#sbtn{
+    height: 34px;
+}
