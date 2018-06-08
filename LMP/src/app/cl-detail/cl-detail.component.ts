@@ -4,6 +4,8 @@ import { Location } from '@angular/common';
 
 import { CheckList } from '../checklist';
 import { ClService } from '../cl.service';
+import { AngularFirestore } from 'angularfire2/firestore';
+
 
 @Component({
   selector: 'app-cl-detail',
@@ -23,7 +25,9 @@ export class ClDetailComponent implements OnInit {
     private clservice: ClService,
     private location: Location,
     private router: Router,
-  ) { }
+    private db: AngularFirestore
+  ) {const settings={timestampsInSnapshots: true};
+  db.app.firestore().settings(settings); }
 
   ngOnInit() {
     this.getCl();
@@ -33,7 +37,6 @@ export class ClDetailComponent implements OnInit {
   getCl(): void{
     this.id = this.route.snapshot.paramMap.get('id');
     this.clservice.getCl(this.id).subscribe(cl => this.cl = cl);
-    console.log(this.cl);
   }
 
   copyList(): void{

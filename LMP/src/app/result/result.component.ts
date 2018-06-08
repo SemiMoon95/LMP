@@ -5,6 +5,8 @@ import { Location } from '@angular/common';
 import { CheckList } from '../checklist';
 import { ClService } from '../cl.service';
 
+import { AngularFirestore } from 'angularfire2/firestore';
+
 @Component({
   selector: 'app-result',
   templateUrl: './result.component.html',
@@ -19,8 +21,13 @@ export class ResultComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private clservice: ClService,
-    private location: Location
-  ) { }
+    private location: Location,
+    private db: AngularFirestore,
+  ) 
+  { 
+    db.firestore.settings({ timestampsInSnapshots: true });
+    db.firestore.enablePersistence();
+  }
 
   ngOnInit() {
   }
@@ -35,7 +42,7 @@ export class ResultComponent implements OnInit {
   }
 
   getResultValue(){
-    var value = 0;
+    /*var value = 0;
     for(var i = 0; i < this.cl.questions.length; i++){
       var count = 0;
       for(var j = 0; j < this.cl.questions[i].checkboxes.length; j++){
@@ -46,7 +53,8 @@ export class ResultComponent implements OnInit {
       value += count/this.cl.questions[i].checkboxes.length;
     }
 
-    this.progressValue = (value/this.cl.questions.length)*100;
+    this.progressValue = (value/this.cl.questions.length)*100;*/
+    this.progressValue= 100;
     console.log(this.progressValue);
   }
 
