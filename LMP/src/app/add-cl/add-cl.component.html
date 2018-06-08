@@ -1,40 +1,43 @@
 <h3>Add new checklist</h3>
 <form [formGroup]="clForm">
   <div>
-    <label>Title:
-      <input class="form-control" formControlName="title">
-    </label>
+    <mat-form-field>Title:
+      <input matInput formControlName="title">
+    </mat-form-field>
   </div>
 
   <div>
-      <label>Content:
-        <input class="form-control" formControlName="content">
-      </label>
+      <mat-form-field>Content:
+        <input matInput formControlName="content">
+      </mat-form-field>
     </div>
 
   <!--Question Array-->
   <div formArrayName="newq">
-    <div class="newq-container" *ngFor="let question of getNewq(clForm); let i=index">
-      <h4>Question #{{i+1}}</h4>
-      <div class="form-control" [formGroupName]="i">
-        <label> Question Title: 
-            <input class="form-control" formControlName="questionTitle">
-            <button (click)="addcb(i)" type="button">Add Option</button>
-        </label>
-        <!--Option Array-->
-        <div class="checkboxes-container" formArrayName="checkboxes">
-          <div [formGroupName]="j" *ngFor="let checkbox of getCheckbox(question); let j=index">
-              <label> Option: 
-                  <input class="form-control" formControlName="option">
-              </label>
+    <mat-card *ngFor="let question of getNewq(clForm); let i=index">
+      <mat-card-content>
+          <div [formGroupName]="i">
+            <mat-form-field> Question#{{i+1}} Title: 
+                <input matInput  formControlName="questionTitle">
+            </mat-form-field>
+            <button mat-button (click)="addcb(i)" type="button">Add Option</button>
+            <!--Option Array-->
+            <div formArrayName="checkboxes">
+              <div [formGroupName]="j" *ngFor="let checkbox of getCheckbox(question); let j=index">
+                  <mat-form-field>
+                      <input matInput formControlName="option" placeholder="option {{j+1}}">
+                  </mat-form-field>
+              </div>
+            </div><!--Option Array-->
           </div>
-        </div><!--Option Array-->
-      </div>
-    </div>
-  </div><!--question array-->
+      </mat-card-content>
+      <mat-card-actions>
+        <button mat-button (click)="addq()" type="button">Add Question</button>
+      </mat-card-actions>
+    </mat-card>
+  </div>
 
-    <button (click)="addq()" type="button">Add Question</button>
-  <button mat-button (click)="onSubmit()">Submit</button>
-</form>
-
+  <div>
+      <button mat-raised-button (click)="onSubmit()">Submit</button>
+  </div>
 <p>Form value: {{ clForm.value | json}}</p>
