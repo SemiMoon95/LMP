@@ -14,7 +14,9 @@
         <div id="cardtitle">{{cl.title | uppercase}}</div>
         <mat-divider></mat-divider>
 
-        <mat-card-content id="cardcontent">{{cl.content}}</mat-card-content>
+        <mat-card-content id="cardcontent">
+          {{cl.content}}
+        </mat-card-content>
 
         <mat-card-actions>
           <button id="start" mat-button routerLink="/detail/{{cl.id}}">START CHECKING</button>
