@@ -79,9 +79,19 @@ export class AddClComponent implements OnInit {
     control.push(this.createCkForm());
   }
 
+  removeq(i){
+    const control=<FormArray>this.clForm.get('newq');
+    control.removeAt(i);
+  }
+
   addcb(j){
     const control = <FormArray>this.clForm.get('newq')['controls'][j].get('checkboxes');
     control.push(this.initOption());
+  }
+
+  removecb(i,j){
+    const control = <FormArray>this.clForm.get('newq')['controls'][i].get('checkboxes');
+    control.removeAt(j);
   }
 
   onSubmit(){
@@ -116,6 +126,5 @@ export class AddClComponent implements OnInit {
   getCheckbox(form){
     return form.controls.checkboxes.controls;
   }
-
 
 }
