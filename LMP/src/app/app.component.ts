@@ -9,7 +9,7 @@ import { AuthService } from './core/auth.service';
 })
 export class AppComponent {
 
-  title = 'LMP';
+  title = 'Let Me Pass';
   constructor(private auth: AuthService){}
 
   public logout(){
