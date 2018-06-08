@@ -21,9 +21,13 @@
       <a routerLink="/addcl"><mat-icon>add</mat-icon></a>
     </div>
 </section-->
+<section id="container">
 
-<div *ngFor = "let cl of checkLists">
-  <mat-card>
+  <mat-card class="card">
+    <button mat-fab color="primary" routerLink="/addcl"><mat-icon>add</mat-icon></button>
+  </mat-card>
+
+  <mat-card class="card" *ngFor = "let cl of checkLists">
     <mat-card-header>
       <mat-card-title><h3>Title: {{cl.title}}</h3></mat-card-title>
     </mat-card-header>
@@ -34,5 +38,7 @@
       <button mat-button routerLink="/detail/{{cl.id}}">Start Checking</button>
     </mat-card-actions>
   </mat-card>
-  <mat-divider></mat-divider>
-</div>
+
+</section>
+
+
