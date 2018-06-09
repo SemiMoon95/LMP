@@ -7,17 +7,19 @@
     <div class="grid grid-pad">
 
       <mat-card class="col-1-4" id="addmat">
-        <button mat-fab class="add" routerLink="/addcl"><mat-icon>add</mat-icon></button>
+        <button mat-icon-button class="add" routerLink="/addcl"><mat-icon>add</mat-icon></button>
       </mat-card>
 
       <mat-card class="col-1-4 for" *ngFor = "let cl of checkLists">
-        <div id="cardtitle">{{cl.title | uppercase}}</div>
-        <mat-divider></mat-divider>
+        <div id="top"> </div>
 
-        <mat-card-content id="cardcontent">
-          {{cl.content}}
+        <mat-card-content id="card">
+          <div id="cardtitle">{{cl.title | uppercase}}</div>
+          <div id="cardcontent">{{cl.content}}</div>
+          <mat-divider></mat-divider>
         </mat-card-content>
-
+        
+        <mat-divider></mat-divider>
         <mat-card-actions>
           <button id="start" mat-button routerLink="/detail/{{cl.id}}">START CHECKING</button>
         </mat-card-actions>

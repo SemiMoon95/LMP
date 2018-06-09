@@ -17,7 +17,7 @@
 }
 .col-1-4 {
     width: 240px;
-    height: 150px;
+    height: 180px;
 }
 
 .grid-pad {
@@ -47,8 +47,8 @@ mat-card {
 }
 
 .see{
-    background-color: #f05F40;
-    color: white;
+    background-color:white;
+    color:#555555;
     text-align: center;
     margin:0;
     padding: 10px;
@@ -58,7 +58,7 @@ mat-card {
 
 
 .add{
-    background-color: #F05F40;;
+    color: #F05F40;
 }
 
 .for{
@@ -67,45 +67,50 @@ mat-card {
     font-family: 'Merriweather', 'Helvetica Neue', Arial, sans-serif;
 }
 
+#top{
+    width: 240px;
+    height: 20px;
+    background-color: #f57f17
+}
+
+#card{
+    width: 240px;
+    margin: 0;
+    height: 118px;
+}
+
 #cardtitle{
     width: 230px;
     padding: 5px;
     padding-top: 15px;
-    height: 35px;
+    height: 40px;
     align-items: center;
     text-align: center;
     margin: 0;
-    font-size: 16px;
+    font-size: 17px;
     justify-content: center;
     font-weight: 400;
+}
+
+#cardcontent{
+    width: 210px;
+    padding: 15px;
+    padding-top: 5px;
+    height: 38px;
+}
+
+mat-card-actions{
+    padding: 0;
 }
 
 mat-divider{
     border-top-width: 2px;
 }
-
-mat-card-content{
-    width: 230px;
-    padding: 5px;
-    height: 48px;
-    margin: 0;
-    background-color: rgb(199, 197, 197);
-}
-
-
-
-mat-card-actions{
-    padding-top: 14px;
-    width: 150px;
-    height: 25px;
-    padding: 0;
-    margin: 0;
-    align-items: center;
-}
 #start{
     width: 240px;
-    height: 42px;
+    height: 40px;
     padding:0;
-    background-color: #F05F40;
-    color: white;
+    margin: 0;
+    background-color: white;
+    color: #F05F40;
 }
