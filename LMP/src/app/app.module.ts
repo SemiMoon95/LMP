@@ -24,6 +24,8 @@ import { CoreModule } from './core/core.module';
 import { AuthService } from './core/auth.service';
 import { AddClComponent } from './add-cl/add-cl.component';
 import { ResultComponent } from './result/result.component';
+import { LoginComponent } from './login/login.component';
+import { ContactComponent } from './contact/contact.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -32,6 +34,8 @@ import { ResultComponent } from './result/result.component';
     HowtouseComponent,
     AddClComponent,
     ResultComponent,
+    LoginComponent,
+    ContactComponent,
   ],
   imports: [
     BrowserModule,

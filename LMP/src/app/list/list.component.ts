@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { CheckList } from '../checklist';
 import { AngularFirestore } from 'angularfire2/firestore';
-
+import { Router } from '@angular/router';
+import { AuthService } from '../core/auth.service';
 import { ClService } from '../cl.service';
 import { Observable, Subscribable, Subscription } from 'rxjs';
 
@@ -16,7 +17,12 @@ export class ListComponent implements OnInit {
   checkLists: CheckList[];
   
 
-  constructor(private clservice: ClService, private db: AngularFirestore){
+  constructor(
+    private clservice: ClService, 
+    private db: AngularFirestore,
+    private auth: AuthService,
+    private router: Router,
+  ){
     const settings={timestampsInSnapshots: true};
     db.app.firestore().settings(settings);
   }
@@ -31,4 +37,6 @@ export class ListComponent implements OnInit {
     );
     this.clservice.getCllist();
   }
+
+  
 }

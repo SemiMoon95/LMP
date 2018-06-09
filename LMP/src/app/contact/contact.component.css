@@ -1,0 +1,30 @@
+.bg{
+  background-color: rgb(243, 242, 242);
+  min-height: 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.see{
+  background-color:#555555;
+  color:white;
+  text-align: center;
+  margin:0;
+  padding: 10px;
+  padding-top: 15px;
+  font-size: 30px;
+}
+
+.container{
+  display: flex;
+  width: 100%;
+}
+
+.example-card {
+  max-width: 400px;
+  float:center;
+  position: relative;
+  margin: 50px auto;
+}
+

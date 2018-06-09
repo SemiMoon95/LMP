@@ -7,7 +7,12 @@
     <div class="grid grid-pad">
 
       <mat-card class="col-1-4" id="addmat">
-        <button mat-icon-button class="add" routerLink="/addcl"><mat-icon>add</mat-icon></button>
+        <div *ngIf="(auth.user | async); else gotoLogin">
+            <button mat-icon-button class="add" routerLink="/addcl"><mat-icon>add</mat-icon></button>
+        </div>
+        <ng-template #gotoLogin>
+            <button mat-icon-button class="add" routerLink="/login"><mat-icon>add</mat-icon></button>
+        </ng-template>
       </mat-card>
 
       <mat-card class="col-1-4 for" *ngFor = "let cl of checkLists">
