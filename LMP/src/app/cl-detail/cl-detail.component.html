@@ -1,24 +1,25 @@
-<div *ngIf="copyCl">
-  <h2>제목 : {{ copyCl.title | uppercase}}</h2>
-  <div>
-    <p>
-      설명: {{ copyCl.content }}
-    </p>
-  </div>
-  <!--div>
-    {{ copyCl.questions[0].questionTitle }}
-    {{ copyCl.questions[0].checkboxes[0].option }}
-  </div-->
-
-  <div *ngFor="let question of copyCl.questions; let i=index">
-    <h4>Question #{{i+1}} {{question.questionTitle}}</h4>
-
-    <div *ngFor="let checkbox of question.checkboxes">
-      <mat-checkbox [(ngModel)]="checkbox.checked"> {{checkbox.option}}, {{checkbox.checked}}</mat-checkbox>
+<div class="bg">
+  <h3> </h3>
+  <div *ngIf="copyCl">
+    <mat-card>
+      <h2>{{ copyCl.title | uppercase}}</h2>
+      <div>
+        <hr>
+        <p class="content">
+          {{ copyCl.content }}
+        </p>
+      </div>
+    </mat-card>
+    <div *ngFor="let question of copyCl.questions; let i=index">
+      <mat-card>
+        <h4>{{question.questionTitle}}</h4>
+        <div *ngFor="let checkbox of question.checkboxes">
+          <mat-checkbox class="ckOption" [(ngModel)]="checkbox.checked"> {{checkbox.option}}</mat-checkbox>
+        </div>
+      </mat-card>
     </div>
   </div>
+  <div class="rbtn">
+    <button class="rbtn_content" mat-raised-button (click)="goResult()">Submit</button>
+  </div>
 </div>
-
-<button mat-button (click)="goResult()">Submit</button>
-
-<!--button mat-button routerLink="/result/{{copyCl.id}}">Show result</button-->

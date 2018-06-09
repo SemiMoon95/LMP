@@ -37,6 +37,7 @@ mat-card {
     margin-left: 16px;
     margin-right: 16px;
     padding:5px;
+    background-color: rgb(59, 156, 185);
 }
 
 #addmat{
@@ -71,7 +72,7 @@ mat-card {
     width: 230px;
     padding: 5px;
     padding-top: 15px;
-    height: 35px;
+    height: 20px;
     align-items: center;
     text-align: center;
     margin: 0;
@@ -87,9 +88,11 @@ mat-divider{
 mat-card-content{
     width: 230px;
     padding: 5px;
-    height: 48px;
+    height: 60px;
     margin: 0;
-    background-color: rgb(199, 197, 197);
+    background-color: white;
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
 }
 
 
