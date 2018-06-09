@@ -92,3 +92,14 @@ h4{
     padding-left: 4px;
     font-size: 14px;
   }
+
+.rbtn{
+    padding: 20px;
+    text-align: center;
+}
+
+.rbtn_content{
+    padding:10px;
+    font-size: 15px;
+    border-radius: 8px;
+}
