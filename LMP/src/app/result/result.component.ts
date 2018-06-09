@@ -15,6 +15,7 @@ export class ResultComponent implements OnInit {
   id: string;
   progressValue: number;
   show: boolean = false;
+  showNum : number;
 
   constructor(
     private route: ActivatedRoute,
@@ -27,9 +28,7 @@ export class ResultComponent implements OnInit {
 
   getResult(): void{
     this.id = this.route.snapshot.paramMap.get('id');
-    console.log(this.id);
     this.clservice.getResult(this.id).subscribe(cl => this.cl = cl);
-    console.log(this.cl);
     this.getResultValue();
     this.show = true;
   }
@@ -47,9 +46,8 @@ export class ResultComponent implements OnInit {
     }
 
     this.progressValue = (value/this.cl.questions.length)*100;
+    this.showNum=Math.floor(this.progressValue);
     console.log(this.progressValue);
   }
-
-
 
 }
