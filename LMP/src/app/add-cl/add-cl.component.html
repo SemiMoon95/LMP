@@ -43,11 +43,10 @@
         </mat-card>
 
         <mat-card class="btnToggle">
-            <mat-button-toggle-group>
-                <mat-button-toggle (click)="addq()" type="button">Add Question</mat-button-toggle>
-                <mat-button-toggle *ngIf="getNewq(clForm).length>1" (click)="removeq(i)">Remove Question</mat-button-toggle>
-                <mat-button-toggle mat-raised-button (click)="onSubmit()">Submit</mat-button-toggle>
-              </mat-button-toggle-group>
+          <button mat-raised-button (click)="addq()" type="button">Add Question</button>
+          <button mat-raised-button *ngIf="getNewq(clForm).length===1" disabled>Remove Question</button>
+          <button mat-raised-button *ngIf="getNewq(clForm).length>1" (click)="removeq(i)">Remove Question</button>
+          <button mat-raised-button (click)="onSubmit()">Submit</button>
         </mat-card>
       </div>
     </form>
