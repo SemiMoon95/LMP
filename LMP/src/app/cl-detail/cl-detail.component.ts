@@ -16,10 +16,9 @@ export class ClDetailComponent implements OnInit {
   
   cl: CheckList;
   copyCl: CheckList;
-  
   istrue: boolean = false;
-
   id: string;
+  
   constructor(
     private route: ActivatedRoute,
     private clservice: ClService,

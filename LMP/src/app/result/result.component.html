@@ -1,8 +1,42 @@
-<div *ngIf="!show">
-  <h3>결과를 보시겠어요?</h3>
-  <button mat-button (click)="getResult()">View Result</button>
-</div>
+<div class="bg">
+  <div *ngIf="!show">
+    <mat-card class="WantResult">
+      <h3> Do you want to see the Result? </h3>
+      <mat-progress-bar mode="buffer"></mat-progress-bar>
+      <div class="vbtn">
+        <button mat-button (click)="getResult()">View Result</button>
+      </div>
+    </mat-card>
+  </div>
 
-<div *ngIf="show">
-  <mat-progress-bar mode="determinate" value="{{progressValue}}"></mat-progress-bar>
+  <div *ngIf="show">
+    <h3 class="resultTitle"> YOUR RESULT </h3>
+    <mat-card class="pCard">
+      <div *ngIf="cl">
+        <h2>{{ cl.title | uppercase}}</h2>
+        <div>
+          <hr>
+          <p class="content">
+            {{ cl.content }}
+          </p>
+        </div>
+        <div class="percentage">
+          <mat-icon class="picon">toys</mat-icon>
+          <div class="ptext">
+            {{showNum}} / 100
+          </div>
+        </div>
+        <mat-progress-bar mode="determinate" color="warn" value="{{progressValue}}"></mat-progress-bar>
+        <div *ngFor="let question of cl.questions; let i=index">
+          <mat-card calss="pCard">
+            <h4>{{question.questionTitle}}</h4>
+            <div *ngFor="let checkbox of question.checkboxes">
+              <div *ngIf="checkbox.checked" class="ckOptionTrue"> {{checkbox.option}}<mat-icon class="dicon">done</mat-icon></div>
+              <div *ngIf="!checkbox.checked" class="ckOptionFalse"> {{checkbox.option}}</div>
+            </div>
+          </mat-card>
+        </div>
+      </div>
+    </mat-card>
+  </div>
 </div>

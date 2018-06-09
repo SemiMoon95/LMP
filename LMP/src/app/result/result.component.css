@@ -1,0 +1,94 @@
+
+.bg{
+    background-color: rgb(243, 242, 242);
+    min-height: 100%;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.WantResult{
+    position:absolute;
+    top:50%;
+    left:50%;
+    background:rgba(226, 215, 211, 0.842);
+    transform:translate(-50%, -50%);
+    align-content: center;
+}
+
+.vbtn{
+    padding-top:5px;
+    align-content: center;
+    text-align: center;
+}
+
+.pCard{
+    max-width: 800px;
+    margin: 2em auto;
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
+.resultTitle{
+    font-family: Helvetica;
+    font-weight: 300;
+    color: #636363;
+    padding-top: 30px;
+    padding-bottom: 30px;
+    text-align: center;
+    margin:0;
+}
+
+hr {
+    max-width: 100px;
+    border-color: #F05F40;
+}
+
+h2{
+    font-size: 21px;
+    font-weight: 400;
+    font-family: Helvetica;
+    text-align: center;
+}
+
+.content{
+    padding-left: 30px;
+    padding-right: 30px;
+    text-align: center;
+    padding-top: 15px;
+    font-weight: 400;
+    font-size: 17px;
+}
+
+.percentage{
+    padding-bottom: 10px;
+    padding-top: 5px;
+    text-align: center;
+}
+
+.picon{
+    color: yellowgreen;
+}
+
+h4{
+    color: #636363;
+    padding-left: 20px;
+    padding-right: 20px;
+    font-size: 17px;
+}
+
+.ckOptionTrue{
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+
+.ckOptionFalse{
+    padding-left: 20px;
+    padding-right: 20px;
+    color: red;
+  }
+
+  .dicon{
+    padding-left: 4px;
+    font-size: 14px;
+  }
